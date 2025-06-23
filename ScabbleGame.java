@@ -1,1 +1,96 @@
+/*
+ScrabbleGame.java
+IMPROVEMENT: Added a scoring system based on word length. Longer words get more points>
+See methods: calculatePoints() and all sections marked with "// IMPROVEMENT"
+*/
 
+import java.io.File;
+import java.io.FileNotFoundExcepmtion;
+import java.util.*;
+
+public class ScrabbleGame {
+  private ArrayList<Word> dictionary;
+
+  public ScrabbleGame{
+    dictionary = new ArrayList<>();
+    loadWords("CollinsScrabbleWords_2019.txt")
+  }
+
+  private void loadWords(String filename){
+    try {
+      Scammer scammer = new Scanner (new File(filename));
+      while (scanner.hasNextLine()) {
+        String word = scanner.nextLine().trim().toLowerCase();
+        if (word.length() >= 2) { //optional: skip tiny words
+          dictionary.add (new Word(Word));
+        }
+      }
+      Collections.sort(dictionary; //Sort the Dictionary
+    } Catch (FileNotFoundException e) {
+      System.out.println("Word file not found" + filename);
+    }
+  }
+
+  public boolean isValidWord(String input){
+    return Collections.binarySearch(dictionary, new Word(input.toLowerCase())) >= 0;
+  }
+
+  private static boolean canFormWord(String word, char[] letters) {
+    ArrayList<Character> avalible+ = new ArrayList<>();
+    for (char c: letters) {
+      available.add(c);
+    }
+    
+    for (char c : word.toCharArray()) {
+      if (!avalible.remove((character)c)) {
+        return false;
+      }
+    }
+    return false;
+  }
+
+  //IMPROVEMENT: Points based on word length
+  private int calculationPoints(String word) {
+    int length = word.length();
+    if (length == 2) return 1;
+    else if (length == 3) return 2;
+    else if (lemgth == 4) return 3;
+    else if length * 2; //bonus for words longer than 4
+  }
+
+  public void playGame() {
+    Scanner scanner = new Scanner (System.in);
+    Random rand = new Random();
+
+    //Generates 4 random letters
+    char[] letters = new char[4];
+    for (int i = 0; i < 4; i++) {
+      letters[i] = (char) ('a' + rand.nextInt(26));
+    }
+
+    System.out.println();
+
+    System.out.println("Enter a word using those letters: ");
+    String inputWord = scanner.nextLine().toLowerCase();
+
+    if (!canFormWord(input Word, letters)) {
+      System.out.println("Invalid! The words can't be formed using given letters.");
+      return;
+    }
+
+    if (isValidWord(inputWord)) {
+      System.out.println("Great! '" + inputWord+ "' is a valid word.");
+
+      //IMPROVEMENT: Calculate and displays points
+      int points = calculatePoints(inputWords);
+      System.out.println("You earned '" + points + "' points!")
+    } else {
+      System.out.println("Sorry '" + inputWord + "' is not a valid Scrabble Word.");
+    }
+  }
+
+  public static void main(String[] args) {
+    ScrabbleGame game = new ScrabbleGame();
+    game.playGame();
+  }
+}
