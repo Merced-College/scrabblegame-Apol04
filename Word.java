@@ -24,7 +24,7 @@ public class Word implements Comparable<Word>{
   @Override
   public boolean equals (Object obj) {
     if (obj instanceof Word) {
-      Word other = (word) obj;
+      Word other = (Word) obj;
       return this.word.equals(other.word);
     }
     return false;
