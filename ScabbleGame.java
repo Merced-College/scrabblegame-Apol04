@@ -2,6 +2,14 @@
 ScrabbleGame.java
 IMPROVEMENT: Added a scoring system based on word length. Longer words get more points>
 See methods: calculatePoints() and all sections marked with "// IMPROVEMENT"
+
+My understanding of object-oriented programming was enhanced with the use of constructors, 
+encapsulation, and data structures on a real game environment. I struggled with handling 
+binary search with custom objects and learned the utilization of Comparable. Debugging was 
+accomplished using the printing of intermediary outputs and referencing Stack Overflow to 
+ensure how ArrayList and binarySearch treat objects. I also used GitHub AI to enhance the way 
+I had programmed canFormWord and optimizing for letter handling.
+
 */
 
 import java.io.File;
